@@ -1,0 +1,52 @@
+<html>
+<title>Validation form</title>
+<script>
+function validateform(){
+var name=document.myform.fname.value;
+var password=document.myform.fpass.value;
+var phone=document.myform.fnum.value;
+var email=document.myform.femail.value;
+let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+let phoneRegex = /^\d{10}$/;
+let passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z\d!@#$%^&*]{8,}$/;
+if (name==""){
+alert("Enter Name");
+return false;
+}
+if (password==""){
+alert("enter password");
+return false;
+}
+if (phone==""){
+alert("Enter phone number");
+return false;
+}
+if (email==""){
+alert("Enter email");
+return false;
+}
+if (!emailRegex.test(email)) {
+alert("Invalid email address!");
+return;
+}
+if (!phoneRegex.test(phone)) {
+alert("Invalid phone number. Must be 10 digits.");
+return;
+}
+if (!passwordRegex.test(password)) {
+alert("Password must be at least 8 characters, including uppercase, lowercase, a number, and a symbol.");
+return;
+}
+alert("Form submitted successfully!");
+}
+</script>
+<body>
+<form name="myform" align="middle" onsubmit="validateform()">
+Name:<input type="text" name="fname"><br><br>
+Password:<input type="password" name="fpass"><br><br>
+Phone No:<input type="number" name="fnum"><br><br>
+Email:<input type="email" name="femail"><br><br>
+<input type="submit" value="Submit">
+</form>
+</body>
+</html>
